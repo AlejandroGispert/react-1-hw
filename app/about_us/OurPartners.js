@@ -1,4 +1,3 @@
-import styles from "./page.module.css";
 import Image from "next/image";
 import logoAlpha from "../../public/business_partners/alphabet-logo.png";
 import logoAmazon from "../../public/business_partners/amazon_logo.png";
@@ -8,6 +7,7 @@ import logoNyu from "../../public/business_partners/nyu-logo.png";
 import logoQueens from "../../public/business_partners/QueensLogo_white.png";
 import logoSamsung from "../../public/business_partners/samsung-logo.png";
 import logoSodexo from "../../public/business_partners/sodexo-logo.png";
+import styles from "./page.module.css";
 
 export default function OurPartners() {
   return (

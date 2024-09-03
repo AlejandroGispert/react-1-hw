@@ -17,8 +17,7 @@ export const RootLayout = ({ children }) => {
       <body className={inter.className}>
         <Navbar />
         {children}
-        {/* TASK - React 1 week 1 */}
-        {/* Import and use the Footer component here */}
+
         <Footer />
       </body>
     </html>

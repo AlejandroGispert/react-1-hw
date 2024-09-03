@@ -1,12 +1,22 @@
 .paragraph {
   width: 200px;
   color: rgb(229, 255, 0);
+  font-size: xx-small;
+  text-align: center;
 }
 .pictureContainer {
   display: flex;
 }
 
 .crewImages {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
+}
+.theH4 {
+  margin: 60px;
+}
+
+.theH4span {
+  color: pink;
+  margin: 30px;
 }

@@ -1,7 +1,7 @@
-import styles from "./page.module.css";
 import OurValues from "./OurValues.js";
 import OurPartners from "./OurPartners.js";
 import OurCrew from "./OurCrew.js";
+import styles from "./page.module.css";
 
 export const Crew = () => {
   return (
