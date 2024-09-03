@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "@/components/destination/destination.module.css";
 import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
 import PlanetWishlistItem from "./PlanetWishlistItem";
-
+import { PlanetCard } from "./PlanetCard";
 // TASK - React 1 week 2
 // Move this to its own file
 
@@ -15,30 +15,28 @@ export const Destinations = () => {
   const [isPlanetSelected, setIsPlanetSelected] = useState(false);
 
   const onAddOrRemovePlanet = (name, index) => {
-    // TASK - React 1 week 2
-    // Implement this function
-    // If the planet is already selected, remove it from the array
-    // If the planet is not selected, add it to the array
+    if (selectedPlanets.includes(name)) {
+      const updatedPlanets = selectedPlanets.filter(
+        (planet) => planet !== name
+      );
+      onAddPlanet(updatedPlanets);
 
-    if (!selectedPlanets.includes(name)) {
+      setNumberOfPlanets(updatedPlanets.length);
+      setIsPlanetSelected((prevState) => ({
+        ...prevState,
+        [name]: false,
+      }));
+    } else {
+      // If the planet is not selected, add it to the array
       const updatedPlanets = [...selectedPlanets, name];
       onAddPlanet(updatedPlanets);
 
       setNumberOfPlanets(updatedPlanets.length);
-      setIsPlanetSelected(true);
-    } else {
-      const updatedPlanets2 = selectedPlanets.filter(
-        (planet) => planet !== name
-      );
-      onAddPlanet(updatedPlanets2);
-      setNumberOfPlanets(updatedPlanets2.length);
-
-      setIsPlanetSelected(false);
+      setIsPlanetSelected((prevState) => ({
+        ...prevState,
+        [name]: true,
+      }));
     }
-
-    // if (index === -1) {
-    //   selectedPlanets.push(name);
-    // }
 
     console.log(
       `You selected the following planet: ${name}, with the index of ${index}`
@@ -84,44 +82,39 @@ export const Destinations = () => {
         <section className="card">
           <h2>Possible destinations</h2>
           {/* TASK - React 1 week 2 */}
-          {/* Add all 4 planets! Europa, Moon, Mars, Titan  */}
+
           {/* Use the README.md file for descriptions */}
-          {/* Create a <PlanetCard /> component, which accepts the following properties: */}
-          {/* name, description, thumbnail, isSelected, onAddOrRemovePlanet */}
-          <div className={styles.planetCard}>
-            <img
-              className={styles.planetThumbnail}
-              src="/destination/image-europa.png"
-              alt=""
-            />
-            <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetSelected ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button
-              className="roundButton"
-              onClick={() => onAddOrRemovePlanet("Pluto", 0)}
-            >
-              {isPlanetSelected ? "REMOVE" : "ADD PLANET"}
-            </button>
-          </div>
-          <div className={styles.planetCard}>
-            <img
-              className={styles.planetThumbnail}
-              src="/destination/image-europa.png"
-              alt=""
-            />
-            <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetSelected ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button
-              className="roundButton"
-              onClick={() => onAddOrRemovePlanet("Pluto1", 0)}
-            >
-              {isPlanetSelected ? "REMOVE" : "ADD PLANET"}
-            </button>
-          </div>
+
+          <PlanetCard
+            name={"Europa"}
+            description={"Lorem ipsum..."}
+            thumbnail={"/destination/image-europa.png"}
+            isSelected={isPlanetSelected["Europa"]}
+            onAddOrRemovePlanet={() => onAddOrRemovePlanet("Europa", 1)}
+          />
+          <PlanetCard
+            name={"Moon"}
+            description={"Lorem ipsum..."}
+            thumbnail={"/destination/image-europa.png"}
+            isSelected={isPlanetSelected["Moon"]}
+            onAddOrRemovePlanet={() => onAddOrRemovePlanet("Moon", 2)}
+          />
+
+          <PlanetCard
+            name={"Mars"}
+            description={"Lorem ipsum..."}
+            thumbnail={"/destination/image-europa.png"}
+            isSelected={isPlanetSelected["Mars"]}
+            onAddOrRemovePlanet={() => onAddOrRemovePlanet("Mars", 3)}
+          />
+
+          <PlanetCard
+            name={"Titan"}
+            description={"Lorem ipsum..."}
+            thumbnail={"/destination/image-europa.png"}
+            isSelected={isPlanetSelected["Titan"]}
+            onAddOrRemovePlanet={() => onAddOrRemovePlanet("Titan", 4)}
+          />
         </section>
       </main>
     </div>
