@@ -1,6 +1,14 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+
+import Links from "./Links";
+import SocialMediaItem from "./SocialMediaItem";
+import facebookIcon from "../../public/socialmedia/Facebook_logo_(square).png";
+import googleIcon from "../../public/socialmedia/googleicon.svg";
+import InstagramIcon from "../../public/socialmedia/Instagram_icon.png";
+import linkedinIcon from "../../public/socialmedia/linkedin.png";
+import tiktokIcon from "../../public/socialmedia/tiktok.png";
 import styles from "./Footer.module.css";
 
 export const Footer = () => {
@@ -17,39 +25,37 @@ export const Footer = () => {
       </div>
       {/* TASK - React 1 week 2 */}
       {/* Create a new List for the Pages */}
-      {/* We need to use the <Link /> component here */}
-      {/* <div className={styles.pages}>
-        <h3>Pages</h3>
-        <ul>
-          <li> <Link/> </li>
-          ...
-        </ul>
-      </div> */}
-      {/* Docs for the Link: https://nextjs.org/docs/pages/api-reference/components/link */}
+
+      <Links />
 
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
-          <li>
-            <a href="https://facebook.com">Facebook</a>
-          </li>
-          <li>
-            <a href="https://instagram.com">Instagram</a>
-          </li>
-          <li>
-            <a href="https://tiktok.com">Tiktok</a>
-          </li>
-          <li>
-            <a href="https://google.com">On the streets at night</a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com">LinkedIn</a>
-          </li>
-          {/* TASK - React 1 week 2 */}
-          {/* Create a <SocialMediaItem /> component and replace all of the list items! */}
-          {/* it should accept the following props */}
-          {/* url, title, icon */}
-          {/* For the icons, you can download 1-2 social media icons for testing and put it in the /public/socialmedia/ folder */}
+          <SocialMediaItem
+            url={"https://facebook.com"}
+            title={"Facebook"}
+            icon={facebookIcon}
+          />
+          <SocialMediaItem
+            url={"https://instagram.com"}
+            title={"Instagram"}
+            icon={InstagramIcon}
+          />
+          <SocialMediaItem
+            url={"https://tiktok.com"}
+            title={"Tiktok"}
+            icon={tiktokIcon}
+          />
+          <SocialMediaItem
+            url={"https://google.com"}
+            title={"On the streets at night"}
+            icon={googleIcon}
+          />
+          <SocialMediaItem
+            url={"https://www.linkedin.com"}
+            title={"LinkedIn"}
+            icon={linkedinIcon}
+          />
         </ul>
       </div>
     </footer>
