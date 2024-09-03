@@ -82,7 +82,7 @@ export const Destinations = () => {
           <h2>Possible destinations</h2>
 
           <PlanetCard
-            name={"Europa"}
+            name={"Europe"}
             description={"Lorem ipsum..."}
             thumbnail={"/destination/image-europa.png"}
             isSelected={isPlanetSelected["Europa"]}
@@ -91,7 +91,7 @@ export const Destinations = () => {
           <PlanetCard
             name={"Moon"}
             description={"Lorem ipsum..."}
-            thumbnail={"/destination/image-europa.png"}
+            thumbnail={"/destination/image-moon.png"}
             isSelected={isPlanetSelected["Moon"]}
             onAddOrRemovePlanet={() => onAddOrRemovePlanet("Moon", 2)}
           />
@@ -99,7 +99,7 @@ export const Destinations = () => {
           <PlanetCard
             name={"Mars"}
             description={"Lorem ipsum..."}
-            thumbnail={"/destination/image-europa.png"}
+            thumbnail={"/destination/image-mars.png"}
             isSelected={isPlanetSelected["Mars"]}
             onAddOrRemovePlanet={() => onAddOrRemovePlanet("Mars", 3)}
           />
@@ -107,7 +107,7 @@ export const Destinations = () => {
           <PlanetCard
             name={"Titan"}
             description={"Lorem ipsum..."}
-            thumbnail={"/destination/image-europa.png"}
+            thumbnail={"/destination/image-titan.png"}
             isSelected={isPlanetSelected["Titan"]}
             onAddOrRemovePlanet={() => onAddOrRemovePlanet("Titan", 4)}
           />
