@@ -23,8 +23,6 @@ export const Footer = () => {
         </p>
         <p>&copy; 2024 Galactica. All rights reserved.</p>
       </div>
-      {/* TASK - React 1 week 2 */}
-      {/* Create a new List for the Pages */}
 
       <Links />
 

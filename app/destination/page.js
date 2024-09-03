@@ -47,9 +47,7 @@ export const Destinations = () => {
         <h1>Travel destinations</h1>
         <section className="card">
           <h2>Wishlist</h2>
-          {/* TASK - React 1 week 2 */}
-          {/* Display the number Of selected planets */}
-          {/* Display the "no planets" message if it is empty! */}
+
           {numberOfPlanets > 0 ? (
             <p>You have {numberOfPlanets} in your wishlist</p>
           ) : (
@@ -82,9 +80,6 @@ export const Destinations = () => {
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
-          {/* TASK - React 1 week 2 */}
-
-          {/* Use the README.md file for descriptions */}
 
           <PlanetCard
             name={"Europa"}
