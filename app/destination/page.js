@@ -5,8 +5,6 @@ import styles from "@/components/destination/destination.module.css";
 import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
 import PlanetWishlistItem from "./PlanetWishlistItem";
 import { PlanetCard } from "./PlanetCard";
-// TASK - React 1 week 2
-// Move this to its own file
 
 export const Destinations = () => {
   //state
@@ -52,8 +50,11 @@ export const Destinations = () => {
           {/* TASK - React 1 week 2 */}
           {/* Display the number Of selected planets */}
           {/* Display the "no planets" message if it is empty! */}
-          <p>No planets in wishlist :(</p>
-          <p>You have {numberOfPlanets} in your wishlist</p>
+          {numberOfPlanets > 0 ? (
+            <p>You have {numberOfPlanets} in your wishlist</p>
+          ) : (
+            <p>No planets in wishlist :(</p>
+          )}
           <b>List coming soon after lesson 3!</b>
 
           {/* STOP! - this is for week 3!*/}
