@@ -15,10 +15,8 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
   // 2. Connect the onThumbnailChange to the <select>
 
   const onAddItemPressed = () => {
-    let inputValue = document.getElementById("customWishlist");
-
-    onAddWishlistItem(inputValue, thumbnail);
-    inputValue = "";
+    onAddWishlistItem(customWishliststate, thumbnail);
+    onCustomWishliststate("");
     // TASK - React 1 week 3
     // implement this function
     // Clear the <input/> field on button press
