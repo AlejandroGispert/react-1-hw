@@ -3,32 +3,29 @@
 import { useState } from "react";
 import styles from "@/components/destination/destination.module.css";
 import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
-import PlanetWishlistItem from "./PlanetWishlistItem";
+import { PlanetWishlistItem } from "./PlanetWishlistItem";
 import { PlanetCard } from "./PlanetCard";
 
 export const Destinations = () => {
   //state
   const [selectedPlanets, onAddPlanet] = useState([]);
   const [numberOfPlanets, setNumberOfPlanets] = useState(0);
-  const [isPlanetSelected, setIsPlanetSelected] = useState(false);
+  const [isPlanetSelected, setIsPlanetSelected] = useState({});
 
-  const onAddOrRemovePlanet = (name, index) => {
+  const onAddOrRemovePlanet = (name, thumbnail) => {
     if (selectedPlanets.includes(name)) {
       const updatedPlanets = selectedPlanets.filter(
         (planet) => planet !== name
       );
       onAddPlanet(updatedPlanets);
-
       setNumberOfPlanets(updatedPlanets.length);
       setIsPlanetSelected((prevState) => ({
         ...prevState,
         [name]: false,
       }));
     } else {
-      // If the planet is not selected, add it to the array
-      const updatedPlanets = [...selectedPlanets, name];
+      const updatedPlanets = [...selectedPlanets, { name, thumbnail }];
       onAddPlanet(updatedPlanets);
-
       setNumberOfPlanets(updatedPlanets.length);
       setIsPlanetSelected((prevState) => ({
         ...prevState,
@@ -36,28 +33,27 @@ export const Destinations = () => {
       }));
     }
 
-    console.log(
-      `You selected the following planet: ${name}, with the index of ${index}`
-    );
+    console.log(`You selected the following planet: ${name}`);
   };
 
-  const arr = [
+  const planetCardArr = [
     {
       title: "Europa",
       description:
         "Europa, one of Jupiter’s moons, is an icy world with a hidden ocean beneath its surface. This mysterious moon is a prime candidate for the search for extraterrestrial life, making it a thrilling destination for space explorers.",
       thumbnail: "/destination/image-europa.png",
       isSelected: isPlanetSelected["Europa"],
-      onAddOrRemovePlanet: () => onAddOrRemovePlanet("Europa", 1),
+      onAddOrRemovePlanet: () =>
+        onAddOrRemovePlanet("Europa", "/destination/image-europa.png"),
     },
     {
       title: "Moon",
       description:
         "Our closest celestial neighbor, the Moon, is a silent witness to Earth's history. With its stunning craters and desolate landscapes, the Moon offers a unique glimpse into space exploration's past and future, making it a perfect destination for lunar adventurers.",
-
       thumbnail: "/destination/image-moon.png",
       isSelected: isPlanetSelected["Moon"],
-      onAddOrRemovePlanet: () => onAddOrRemovePlanet("Moon", 2),
+      onAddOrRemovePlanet: () =>
+        onAddOrRemovePlanet("Moon", "/destination/image-moon.png"),
     },
     {
       title: "Mars",
@@ -65,7 +61,8 @@ export const Destinations = () => {
         "Mars, the Red Planet, is a barren yet fascinating world with vast deserts, towering volcanoes, and the deepest canyon in the solar system. As humanity’s next frontier, Mars invites us to dream of colonization and the possibilities of life beyond Earth.",
       thumbnail: "/destination/image-mars.png",
       isSelected: isPlanetSelected["Mars"],
-      onAddOrRemovePlanet: () => onAddOrRemovePlanet("Mars", 3),
+      onAddOrRemovePlanet: () =>
+        onAddOrRemovePlanet("Mars", "/destination/image-mars.png"),
     },
     {
       title: "Titan",
@@ -73,9 +70,22 @@ export const Destinations = () => {
         "Titan, Saturn's largest moon, is a world of dense atmosphere and liquid methane lakes. This enigmatic moon is shrouded in a thick orange haze, concealing a landscape that is both alien and strangely familiar, beckoning explorers to uncover its secrets.",
       thumbnail: "/destination/image-titan.png",
       isSelected: isPlanetSelected["Titan"],
-      onAddOrRemovePlanet: () => onAddOrRemovePlanet("Titan", 4),
+      onAddOrRemovePlanet: () =>
+        onAddOrRemovePlanet("Titan", "/destination/image-titan.png"),
     },
   ];
+
+  const removeFromWishlist = (name) => {
+    const updatedPlanets = selectedPlanets.filter(
+      (planet) => planet.name !== name
+    );
+    onAddPlanet(updatedPlanets);
+    setNumberOfPlanets(updatedPlanets.length);
+    setIsPlanetSelected((prevState) => ({
+      ...prevState,
+      [name]: false,
+    }));
+  };
 
   return (
     <div className="fullBGpicture">
@@ -91,45 +101,42 @@ export const Destinations = () => {
           )}
           <b>List coming soon after lesson 3!</b>
 
-          {/* TASK - React 1 week 3 */}
-          {/* Import the AddWishlistItem react component */}
-          {/* <AddWishlistItem /> */}
-          {/* TASK - React 1 week 3 */}
-          {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
-          {/* Implement the "REMOVE" function */}
-          {/* uncomment the following code snippet: */}
-          {/* 
+          <AddWishlistItem
+            onAddWishlistItem={(name, thumbnail) =>
+              onAddOrRemovePlanet(name, thumbnail)
+            }
+          />
+
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
-            <PlanetWishlistItem 
-              name="europa"
-              onRemove={() => removeFromWishlist('europa')}
-              thumbnail="/destination/image-europa.png"
-            />
-            <PlanetWishlistItem 
-              name="europa"
-              onRemove={() => removeFromWishlist('europa')}
-              thumbnail="/destination/image-europa.png"
-            />
-          </div> */}
+            {selectedPlanets.map((planet) => {
+              console.log(planet.name + " in wishlist");
+              return (
+                <PlanetWishlistItem
+                  key={planet.name}
+                  name={planet.name}
+                  onRemove={() => removeFromWishlist(planet.name)}
+                  thumbnail={planet.thumbnail}
+                />
+              );
+            })}
+          </div>
         </section>
 
         <section className="card">
           <h2>Possible destinations</h2>
-          {arr.map((value) => {
+          {planetCardArr.map((value) => {
             return (
               <PlanetCard
+                key={value.title}
                 name={value.title}
                 description={value.description}
                 thumbnail={value.thumbnail}
                 isSelected={value.isSelected}
                 onAddOrRemovePlanet={value.onAddOrRemovePlanet}
-              >
-                {" "}
-              </PlanetCard>
+              />
             );
           })}
-          // /> */}
         </section>
       </main>
     </div>

@@ -34,24 +34,15 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          <NavItem
-            title={navbarItems[0].title}
-            link={navbarItems[0].link}
-            isActive={navbarItems[0].link === currentPath ? true : false}
-          />
-          <NavItem
-            title={navbarItems[1].title}
-            link={navbarItems[1].link}
-            isActive={navbarItems[1].link === currentPath ? true : false}
-          />
-          <NavItem
-            title={navbarItems[2].title}
-            link={navbarItems[2].link}
-            isActive={navbarItems[2].link === currentPath ? true : false}
-          />
-
-          {/* TASK - React 1 week 3 */}
-          {/* replace repeating content by using navbarItems.map(() => <NavLink />) */}
+          {navbarItems.map((e) => {
+            return (
+              <NavItem
+                title={e.title}
+                link={e.link}
+                isActive={e.link === currentPath ? true : false}
+              />
+            );
+          })}
         </ul>
       </nav>
     </header>
