@@ -77,6 +77,8 @@ export const Destinations = () => {
     },
   ];
 
+  const removeFromWishlist = (name) => {};
+
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
@@ -98,20 +100,20 @@ export const Destinations = () => {
           {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
           {/* Implement the "REMOVE" function */}
           {/* uncomment the following code snippet: */}
-          {/* 
+
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
-            <PlanetWishlistItem 
+            <PlanetWishlistItem
               name="europa"
-              onRemove={() => removeFromWishlist('europa')}
+              onRemove={() => removeFromWishlist("europa")}
               thumbnail="/destination/image-europa.png"
             />
-            <PlanetWishlistItem 
+            <PlanetWishlistItem
               name="europa"
-              onRemove={() => removeFromWishlist('europa')}
+              onRemove={() => removeFromWishlist("europa")}
               thumbnail="/destination/image-europa.png"
             />
-          </div> */}
+          </div>
         </section>
 
         <section className="card">
@@ -129,7 +131,6 @@ export const Destinations = () => {
               </PlanetCard>
             );
           })}
-          // /> */}
         </section>
       </main>
     </div>
