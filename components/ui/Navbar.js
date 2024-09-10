@@ -34,8 +34,6 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          {/* TASK - React 1 week 2 */}
-
           <NavItem
             title={navbarItems[0].title}
             link={navbarItems[0].link}
